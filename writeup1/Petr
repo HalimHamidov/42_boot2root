@@ -20,13 +20,17 @@ PORT    STATE SERVICE
 So boot-to-root vm running on 192.168.56.102 ip, and have few open ports.
 
 On http there is site, which is pretty empty, I check it html source code and there is nothing interesting in it. 
-After that I scanned it with *skipfish -o path_to_save http://192.168.56.102* and *nikto -h http://192.168.56.102*, and in sub dirs I got only fonts and icons so it's completely useless (I think).
+After that I scanned it with * skipfish -o path_to_save http://192.168.56.102 * and * nikto -h http://192.168.56.102 *, and in sub dirs I got only fonts and icons so it's completely useless (I think).
 
 There is another open port which could be scanned, it's https.
 *skipfish* now is useless, because https://192.168.56.102 returns 404, but with *nikto -h https://192.168.56.102* we have few interesting dirs: forum, webmail, phpmyadmin
 
 On forum there are 4 topics and only one is iteresting, topic *Probleme login* where user *lmezard* push logs with attempts to log in.
 
-In these logs we can see, what username lmezard used trying to log in *Failed password for invalid user 'username'* 
+In these logs we can see, what username lmezard used trying to log in, it's *Failed password for invalid user 'username'* 
 And there is interesting username in string * Failed password for invalid user !q\]Ej?*5K5cy*AJ *
 And, these characters came up for lmezard password.
+
+In lmezard profile we could see his email, so we go to webmail, and try the same password !q\]Ej?*5K5cy*AJ to his mail. And it's fits again.
+
+In mail there is message * DB Access * which contains * Use root/Fg-'kKXBj87E:aJ$ *. It doesn't fit to ssh and ftp connection, so another one is phpmyadmin, and it's fit to phpmyadmin.
