@@ -33,4 +33,5 @@ And, these characters came up for lmezard password.
 
 In lmezard profile we could see his email, so we go to webmail, and try the same password !q\]Ej?*5K5cy*AJ to his mail. And it's fits again.
 
-In mail there is message * DB Access * which contains * Use root/Fg-'kKXBj87E:aJ$ *. It doesn't fit to ssh and ftp connection, so another one is phpmyadmin, and it's fit to phpmyadmin.
+In mail there is message * DB Access * which contains * Use root/Fg-'kKXBj87E:aJ$ *. It doesn't fit to ssh and ftp connection, but fit to phpmyadmin.
+
