@@ -1,8 +1,53 @@
-// Тут взлом бомбы
+
+echo -n "Iheartpwnage" | shasum -a 256
+laurie : 330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4
+
+scp -P 2222 laurie@127.0.0.1:bomb ./
+
+gdb bomb
+    disas main
+    disas phase_1
+    x/1cs 0x80497c0
+    "Public speaking is very easy."
+
+    disas phase_2
+    Тут читается 6 чисел. Первое - 1, и потом в цикле prev * (index(cur) + 1)
+    "1 2 6 24 120 720"
+
+    disas phase_3
+    Тут я прифигел и скачал cutter.
+    Видим switch-case. Нужно, чтобы первое число совпало с свитчом, буква с буквой внтри свитча и число с числом внутри свитча.
+    0 q 777
+    1 b 214
+
+    phase_4
+    Рекурсивная функция, которая возвращает число. Нужно 55.
+    1 -> 1
+    2 -> 2
+    3 -> 3
+    4 -> 5
+    5 -> 8
+    6 -> 13
+    7 -> 21
+    8 -> 34
+    9 -> 55
+
+    phase_5
+    слово "giants" <- байтоёбство <- слово "opukmq"
+    15 0 5 11 13 1
+
+    phase_6
+    Получает 6 чисел
+    4 цикла
+    1) Проверяет что числа уникальны
+    4) Проверяет что массив отсортирован
+
+"Public speaking is very easy.1 2 6 24 120 7201 b 2149"
 
 // А тут змейка
 
 Получаем слово SLASH
+md5 -s SLASH
 Получаем хэш по md5: 646da671ca01bb5d84dbb5fb2238dc8e, это и есть пароль для zaz.
 Видим файл exploit_me. Название намекает, что его надо взломать.
 Это бинарник, который принимает аргумент и печатает его.
@@ -20,3 +65,6 @@ gdb exploit_me
 
 Подробное описание эксплойта.
 https://www.exploit-db.com/docs/english/28553-linux-classic-return-to-libc-&-return-to-libc-chaining-tutorial.pdf
+
+gdb шпаргалка
+https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf
