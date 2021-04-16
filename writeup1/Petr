@@ -58,5 +58,9 @@ drwxr-x--- 4 zaz                  zaz                  147 Oct 15  2015 zaz
 
 There is file password in LOOKATME dir, which contains * lmezard:G!@M6f4Eatau{sF" *
 
-This password fit to ftp port, which contains README file - "Complete this little challenge and use the result as password for user 'laurie' to login in ssh", and fun file (which need to decode).
+This password fit to ftp port, which contains README file - "Complete this little challenge and use the result as password for user 'laurie' to login in ssh", and fun file (which need to be solved).
 (command 'get' to receive files through ftp)
+
+File fun is archive (I found out it because of '0ustar' mark in file).
+After unzipping (* tar -xf fun *)
+There is a folder * ft_fun * with a lot of pcap files.
