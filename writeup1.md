@@ -77,12 +77,8 @@ Compile and run "prog.c". Got "Iheartpwnage" password and advice to use sha-256.
 ```
 echo -n "Iheartpwnage" | shasum -a 256
 ```
-laurie : 330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4
-
+Now we can connect throught ssh to laurie with "330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4" password.
 There is bomb here. Bomb contains of 6 phases. We should input correct key in each stage.
-```
-scp -P 2222 laurie@127.0.0.1:bomb ./
-```
 
 gdb bomb
 
@@ -96,7 +92,11 @@ gdb bomb
     "1 2 6 24 120 720"
 
     disas phase_3
-It is very difficult to read this asm code. And We downloaded cutter to decompile bomb. Yeah, this way is much better.
+It is very difficult to read this asm code. And We downloaded cutter to decompile bomb.
+```
+scp -P 2222 laurie@127.0.0.1:bomb ./
+```
+Yeah, this way is much better.
 We see switch-case condition here and there are several correct combinations.
 0 q 777
 1 b 214
