@@ -102,7 +102,7 @@ We see switch-case condition here and there are several correct combinations.
 1 b 214
 
 phase_4  
-Recursive function, which returns sum of calls this function with num - 1 and num - 2. If num < 2 function returns 1. We need 55.
+Recursive function, which returns sum of calls this function with num - 1 and num - 2. If num < 2 function returns 1. We need 55.  
 1 -> 1  
 2 -> 2  
 3 -> 3  
