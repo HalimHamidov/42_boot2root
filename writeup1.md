@@ -131,7 +131,7 @@ Fourth checks that new array is sorted.
 So we need numbers "4 2 6 3 1 5".
 
 README says to remove spaces when we have FULL the password. Ok, lets concatenate all strings and remove spaces.
-"Publicspeakingisveryeasy.126241207201b2149opekmq426135". This is password for thor.
+"Publicspeakingisveryeasy.126241207201b2149opekmq426135". This is password for thor. (Look at "135" at the end. It is soooo crazy-making!)
 
 ### thor
 Use our "parse_turtle_steps.py" script and look at word "SLASH".
