@@ -97,9 +97,9 @@ It is very difficult to read this asm code. And We downloaded cutter to decompil
 scp -P 2222 laurie@127.0.0.1:bomb ./
 ```
 Yeah, this way is much better.
-We see switch-case condition here and there are several correct combinations.
-0 q 777
-1 b 214
+We see switch-case condition here and there are several correct combinations. 
+"0 q 777"  
+"1 b 214"
 
 phase_4  
 Recursive function, which returns sum of calls this function with num - 1 and num - 2. If num < 2 function returns 1. We need 55.  
@@ -112,6 +112,7 @@ Recursive function, which returns sum of calls this function with num - 1 and nu
 7 -> 21  
 8 -> 34  
 9 -> 55  
+"9" is solution.
 
 phase_5  
 So we will have some sex with bytes here.
