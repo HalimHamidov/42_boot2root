@@ -103,15 +103,15 @@ We see switch-case condition here and there are several correct combinations.
 
 phase_4  
 Recursive function, which returns sum of calls this function with num - 1 and num - 2. If num < 2 function returns 1. We need 55.
-1 -> 1
-2 -> 2
-3 -> 3
-4 -> 5
-5 -> 8
-6 -> 13
-7 -> 21
-8 -> 34
-9 -> 55
+1 -> 1  
+2 -> 2  
+3 -> 3  
+4 -> 5  
+5 -> 8  
+6 -> 13  
+7 -> 21  
+8 -> 34  
+9 -> 55  
 
 phase_5  
 So we will have some sex with bytes here.
