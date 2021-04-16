@@ -124,10 +124,10 @@ Look at ascii table and get characters which hexadecimal second digit are f, 0, 
 phase_6  
 Program expects 6 numbers.
 Inside program is array with numbers 253 725 301 997 212 432.
-There are 4 cycles here.
+There are 4 cycles here.  
 First checks that each number is unique and 1 <= n <= 6.  
-Second and third build new array from program's array with inputed indexes.
-Fourth checks that new array is sorted.
+Second and third build new array from program's array with inputed indexes.  
+Fourth checks that new array is sorted.  
 So we need numbers "4 2 6 3 1 5".
 
 README says to remove spaces when we have FULL the password. Ok, lets concatenate all strings and remove spaces.
