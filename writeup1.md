@@ -1,13 +1,14 @@
 # Main way
 
 Since bridged adapter is blocked in the school - I setup kali linux vm and boot-to-root vm through host-only adapter.
-I created local network through *VirtualBox->File->Host network manager*, and it's ip *192.168.56.1/24*.
+I created local network through **VirtualBox->File->Host network manager**, and it's ip **192.168.56.1/24**.
 Now, there is a local network with kali vm, boot-to-root vm and host computer.
 And kali will see only host computet and boot-to-root vm.
-My kali linux ip is 192.168.56.101 (through * ip a *).
-And we need to find out how can we interact with boot-to-root vm. For this I check all available ports im my local network with * nmap 192.168.56.1-225 *
+My kali linux ip is 192.168.56.101 (through **ip a**).
+And we need to find out how can we interact with boot-to-root vm. For this I check all available ports im my local network with **nmap 192.168.56.1-225**
 
 For only one non host port in my local network I received:
+```
 Nmap scan report for 192.168.56.102
 Host is up (0.0010s latency).
 Not shown: 994 closed ports
@@ -18,11 +19,12 @@ PORT    STATE SERVICE
 143/tcp open  imap
 443/tcp open  https
 993/tcp open  imaps
+```
 
 So boot-to-root vm running on 192.168.56.102 ip, and have few open ports.
 
 On http there is site, which is pretty empty, I check it html source code and there is nothing interesting in it. 
-After that I scanned it with * skipfish -o path_to_save http://192.168.56.102 * and * nikto -h http://192.168.56.102 *, and not found thomething interesting.
+After that I scanned it with **skipfish -o path_to_save http://192.168.56.102** and **nikto -h http://192.168.56.102**, and not found thomething interesting.
 
 There is another open port which could be scanned, it's https.
 using * nikto -h https://192.168.56.102 * we recieve few interesting dirs: forum, webmail, phpmyadmin
