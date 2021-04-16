@@ -97,7 +97,7 @@ gdb bomb
 
     disas phase_3
 It is very difficult to read this asm code. And We downloaded cutter to decompile bomb. Yeah, this way is much better.
-We see switch-case condition here and there is several correct combinations.
+We see switch-case condition here and there are several correct combinations.
 0 q 777
 1 b 214
 
