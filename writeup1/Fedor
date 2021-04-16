@@ -1,4 +1,14 @@
 
+### lmezard
+
+We can see tar archive here. There are a lot of files in this archieve. Every file contains
+line of code and comments with number of this line. We can use our "build_program.py" script to get
+full program. Compile and run this program. Got "Iheartpwnage" password and advice to use sha-256.
+Видим архив, в котором куча файлов. Понятно, что в файлах лежат куски кода,
+также в каждом файле порядковый номер данного куска. Используя простецкий скрипт
+build_program.py добываем прогу на си и запускаем. Выводится пароль и подсказка, что
+его надо прогнать через sha-256.
+
 ### laurie
 echo -n "Iheartpwnage" | shasum -a 256
 laurie : 330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4
@@ -34,8 +44,12 @@ gdb bomb
     9 -> 55
 
     phase_5
-    слово "giants" <- байтоёбство <- слово "opekmq"
-    15 0 5 11 13 1
+    Нужно получить слово "giants" из массива символов.
+    Вводится также слово из 6 букв.
+    Полученные индексы: 15 0 5 11 13 1.
+    Эти индексы получаются путём битового умножения аски-символа на 0xf.
+    Получаем слово "opekmq".
+    
 
     phase_6
     Получает 6 чисел
