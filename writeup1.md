@@ -97,7 +97,7 @@ It is very difficult to read this asm code. And We downloaded cutter to decompil
 scp -P 2222 laurie@127.0.0.1:bomb ./
 ```
 Yeah, this way is much better.
-We see switch-case condition here and there are several correct combinations. 
+We see switch-case condition here and there are several correct combinations.  
 "0 q 777"  
 "1 b 214"
 
