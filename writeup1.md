@@ -101,33 +101,33 @@ We see switch-case condition here and there are several correct combinations.
 0 q 777
 1 b 214
 
-phase_4
-    Recursive function, which returns sum of calls this function with num - 1 and num - 2. If num < 2 function returns 1. We need 55.
-    1 -> 1
-    2 -> 2
-    3 -> 3
-    4 -> 5
-    5 -> 8
-    6 -> 13
-    7 -> 21
-    8 -> 34
-    9 -> 55
+phase_4  
+Recursive function, which returns sum of calls this function with num - 1 and num - 2. If num < 2 function returns 1. We need 55.
+1 -> 1
+2 -> 2
+3 -> 3
+4 -> 5
+5 -> 8
+6 -> 13
+7 -> 21
+8 -> 34
+9 -> 55
 
-phase_5
-    So we will have some sex with bytes here.
-    We shoud get word "giants". Program expects 6 charachters.
-    Logical AND with 0xF uses for each inputed character, and then get this num as index of "isrveawhobpnutfg" array.
-    So we need indexes: 15 0 5 11 13 1.
-    Look at ascii table and get characters which hexadecimal second digit are f, 0, 5, b, d, 1. It is "opekmq".
+phase_5  
+So we will have some sex with bytes here.
+We shoud get word "giants". Program expects 6 charachters.
+Logical AND with 0xF uses for each inputed character, and then get this num as index of "isrveawhobpnutfg" array.
+So we need indexes: 15 0 5 11 13 1.
+Look at ascii table and get characters which hexadecimal second digit are f, 0, 5, b, d, 1. It is "opekmq".
 
-phase_6
-    Program expects 6 numbers.
-    Inside program is array with numbers 253 725 301 997 212 432.
-    There are 4 cycles here.
-    1) Checks that each number is unique and 1 <= n <= 6.
-    2) 3) Build new array from program's array with inputed indexes.
-    4) Check that new array is sorted.
-    So we need numbers "4 2 6 3 1 5".
+phase_6  
+Program expects 6 numbers.
+Inside program is array with numbers 253 725 301 997 212 432.
+There are 4 cycles here.
+1) Checks that each number is unique and 1 <= n <= 6.
+2) 3) Build new array from program's array with inputed indexes.
+4) Check that new array is sorted.
+So we need numbers "4 2 6 3 1 5".
 
 README says to remove spaces when we have FULL the password. Ok, lets concatenate all strings and remove spaces.
 "Publicspeakingisveryeasy.126241207201b2149opekmq426135". This is password for thor.
