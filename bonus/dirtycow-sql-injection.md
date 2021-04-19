@@ -172,7 +172,7 @@ LINES TERMINATED BY '\r\n' STARTING BY '
 
 It's dirtycow epxploit **https://www.exploit-db.com/exploits/40839**.
 I change symbols for correct sql format with http://www.unit-conversion.info/texttools/replace-text/
-(Replace " -> \", ' -> \', \n -> \\n)
+(Replace " -> \\", ' -> \\', \n -> \\\n)
 
 And set with help https://stackoverflow.com/questions/5268088/extra-backslash-when-select-into-outfile-in-mysql
 ```
