@@ -179,7 +179,7 @@ And set with help https://stackoverflow.com/questions/5268088/extra-backslash-wh
 LINES TERMINATED BY '\r\n'
 ESCAPED BY ''
 ```
-because lines end with '\' symbol and I couldn't compile file and escaped symboles conflict with each other.
+because lines ended with '\\' symbol and I couldn't compile file and escaped symboles conflict with each other.
 
 
 After that compile and run exploit with:
