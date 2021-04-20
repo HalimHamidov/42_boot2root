@@ -1,4 +1,4 @@
-# Getting into root on system boot
+# Getting root on system boot
 
 ## Getting into boot menu
 
@@ -12,4 +12,4 @@ In order to get a list of available kernels, we just have to press `Tab` when we
 
 In order for the argument to have the value of interest during kernel loading, it must be set by writing it after the chosen kernel like that: `<kernel> <argument>`. In our case it will be `live init=/bin/bash`. We know it from the official [Debian boot process documentation](https://wiki.debian.org/BootProcess).
 
-After doing that we'll appear in the bash shell under user `root`. **You are root now.**
+After doing that we'll appear in the bash shell under user `root`. **You are root now!**

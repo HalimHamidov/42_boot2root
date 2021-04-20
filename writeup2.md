@@ -1,4 +1,4 @@
-# Opening file system without any restrictions
+# Opening the file system of the ISO file
 
 ## Opening the given ISO file
 
