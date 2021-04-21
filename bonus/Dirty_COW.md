@@ -2,7 +2,7 @@
 
 ## How to start?
 
-Need to do steps from [Main way #1](https://github.com/MrOnimus/42_boot2root/blob/master/writeup1.md) to start with `laurie` user, or steps from [Opening ISO file](https://github.com/MrOnimus/42_boot2root/blob/master/bonus/Opening_ISO_file.md) to start with `zaz` user.
+Need to do steps from [Main way #1](https://github.com/MrOnimus/42_boot2root/blob/master/writeup1) to start with `laurie` user, or steps from [Opening ISO file](https://github.com/MrOnimus/42_boot2root/blob/master/bonus/Opening_ISO_file.md) to start with `zaz` user.
 
 ## Exploring the possibility of privilege escalation
 
