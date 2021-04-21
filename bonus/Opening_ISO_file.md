@@ -29,14 +29,14 @@ Maybe password will be in the `.bash_history` file. If it turns out that this is
 
 We now have less than a third of all the content of the files we are interested in. After running our eyes over the lines we received, we find one that is of great interest to us. Something like a password from the user `zaz`. Actually, that's what password is.
 
-**We've got to the zaz user! Now you shoud proceed to the 1st writeup.**
+**We've got to the zaz user! Now you should proceed to the 1st writeup.**
 
 ## What to do next?
 
-If you want it to be short and simple - proceed to the [Dirtry COW writeup](https://github.com/MrOnimus/42_boot2root/blob/master/bonus/Dirty_COW.md). By following this path, you will come along the **Bonus way #1**:
+If you want it to be short and simple - proceed to the [Dirty COW writeup](https://github.com/MrOnimus/42_boot2root/blob/master/bonus/Dirty_COW.md). By following this path, you will come along the **Bonus way #1**:
 
 ![Bonus way #1](https://drive.google.com/uc?export=view&id=1eUNJ5Mz21R8t2LFoC3ybnX-dVSGYO_oy)
 
-Of course, you can choose another path. Proceed to the zaz path of the [Main way #1](https://github.com/MrOnimus/42_boot2root/blob/master/writeup1.md) to make it long, hard, and funny. By following this path, you will come along the **Bonus way #2**:
+Of course, you can choose another path. Proceed to the `zaz` path of the [Main way #1](https://github.com/MrOnimus/42_boot2root/blob/master/writeup1) to make it long, hard, and funny. By following this path, you will come along the **Bonus way #2**:
 
 ![Bonus way #2](https://drive.google.com/uc?export=view&id=1KkWnnjpG7Bo9byMjtoz8TyJy8fT1mtPl)
