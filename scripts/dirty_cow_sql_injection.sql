@@ -162,4 +162,4 @@ int main(int argc, char *argv[])
   return 0;
 }' INTO OUTFILE '/var/www/forum/templates_c/exploit.c'
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY ''
-LINES TERMINATED BY '\r\n' STARTING BY '
+LINES TERMINATED BY '\r\n' STARTING BY ''

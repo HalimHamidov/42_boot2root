@@ -40,10 +40,10 @@ using `nikto -h https://192.168.56.102` we receive few interesting directories: 
 On forum there are 4 topics and only one is interesting, topic **Probleme login** where user **lmezard** push logs with attempts to log in.
 
 In these logs we can see, what username `lmezard` used trying to log in, it's **"Failed password for invalid user 'username'"** 
-And there is interesting username in string **"Failed password for invalid user !q\]Ej?\*5K5cy\*AJ"**
+And there is interesting username in string **"Failed password for invalid user !q\]Ej?*5K5cy*AJ"**
 And, these characters came up for `lmezard` password.
 
-In `lmezard` profile we could see his email, so we go to webmail, and try the same password `!q\]Ej?\*5K5cy\*AJ` to his mail. And it's fits again.
+In `lmezard` profile we could see his email, so we go to webmail, and try the same password `!q\]Ej?*5K5cy*AJ` to his mail. And it's fits again.
 
 In mail there is message **DB Access** which contains **Use root/Fg-'kKXBj87E:aJ$ .** It doesn't fit to ssh and ftp connection, but it's fit to phpMyAdmin.
 
